@@ -5,13 +5,16 @@
 close; clear; clc;
 %% Define the parameter
 param.G = 1; % Gravitational constant
-param.M = 200; % Mass of planet
+param.M = 100; % Mass of planet
 param.radius = 1; % Radius of planet
 param.vel = 2; % Velocity of planet
+param.m = 1; % Mass of craft
+param.r_SOI = param.radius*(param.m/param.M)^0.4;
+time_range = [0 20];
 
 X0 = [0; 0]; % The position of planet
 R = [10; -5]; % Distance from planet to craft
-R_dot = [-5; 0]; % Velocity of craft
+R_dot = [-4; 0]; % Velocity of craft
 dt = 1.e-1; % Time rate
 ang = linspace(0,2*pi,100);
 %% Calculate the trajectory and plot
@@ -43,11 +46,11 @@ ax4 = subplot(2,4,[7,8]);
 title("Total energy");
 xlabel('time');
 ylabel('total energy');
-xlim([0 10]);
+xlim(time_range);
 energy = animatedline('Color','g');
 
 
-for t=0:dt:10
+for t=time_range(1):dt:time_range(end)
     clearpoints(circle);
     X0 = [param.vel.*t; 0];
     % draw circle
@@ -56,6 +59,9 @@ for t=0:dt:10
     addpoints(circle,xc,yc);
     % trajectory
     X = RK4(X,dt,param);
+    if condition(X,param)
+        break
+    end
     X_space = X(1:2) + X0;
     V_space = X(3:4) + [param.vel,0];
     addpoints(traj,X_space(1),X_space(2));
@@ -67,7 +73,7 @@ for t=0:dt:10
     addpoints(energy,t,E);
     % updata
     drawnow limitrate
-    pause(0.1)
+    pause(0.05)
 end
 
 [time,Energy] = getpoints(energy);
@@ -89,4 +95,12 @@ function X_next = RK4(X,dt,param)
     K4 = dt.*dydx(X+K3, param);
 
     X_next = X + (K1 +2.*K2 +2.*K3 +K4)./6;
+end
+function cond = condition(X,param)
+    if norm(X(1:2)) <= param.radius
+        cond = true;
+        msgbox("Collapse!");
+    else
+        cond = false;
+    end
 end
