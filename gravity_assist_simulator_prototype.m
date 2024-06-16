@@ -49,7 +49,7 @@ ylabel('total energy');
 xlim(time_range);
 energy = animatedline('Color','g');
 
-
+pause(5);
 for t=time_range(1):dt:time_range(end)
     clearpoints(circle);
     X0 = [param.vel.*t; 0];
@@ -78,6 +78,8 @@ end
 
 [time,Energy] = getpoints(energy);
 fprintf("Ei: %.1f, Ef: %.1f, E gain: %.1f \n",Energy(1),Energy(end),Energy(end)-Energy(1));
+
+writeAnimation("prototype_test.gif");
 
 %% Functions
 function dxdv = dydx(X, param)
