@@ -18,16 +18,16 @@ In this simulation, I got three assumptions.
 From these assumptions, I could get a differential equation of motion of spacecraft and motion of the planet.
 
 
-$$ \vec{r} = \vec{r}_{\text{spacecrafts}} - \vec{r}_{\text{planet}} \tag{1} $$
+$$\vec{r} = \vec{r}_{\text{spacecrafts}} - \vec{r}_{\text{planet}} \tag{1}$$
 
 
 <a name="eq-2">
 
-$$ \frac{d^{2} \vec{r}}{d t^{2}} = - \frac{G M }{r} \hat{r} \tag{2} $$
+$$\frac{d^{2} \vec{r}}{d t^{2}} = - \frac{G M }{r} \hat{r} \tag{2}$$
 
 </a>
 
-$$ \vec{r}_{\text{planet}} = (-u \cdot t, 0) \tag{3} $$
+$$\vec{r}_{\text{planet}} = (-u \cdot t, 0) \tag{3}$$
 
 I caculated the trajectory of spacecraft from eq [(2)](#eq-2) using [4th order Runge-Kutta method][1].
 
