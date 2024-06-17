@@ -81,3 +81,6 @@ THis is the example of results with default parameters.
 Sample codes of Lab04 in this courses. Lab04 of AE280 Software Applications in Aerospace Engineering, KAIST.
 
 TA Guik Baek's advice. (2024, May 8).
+
+# More info
+Check my github site: https://github.com/sungchol3/gravity_assist_simulator_matlab
