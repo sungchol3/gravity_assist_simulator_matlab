@@ -87,12 +87,3 @@ TA Guik Baek's advice. (2024, May 8).
 
 # More info
 Check my github site: https://github.com/sungchol3/gravity_assist_simulator_matlab
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$', '$']]},
-    messageStyle: "none",
-    "HTML-CSS": { availableFonts: "TeX", preferredFont: "TeX" },
-  });
-</script>
